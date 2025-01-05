@@ -33,6 +33,7 @@ cp *.dat $CONDA_PREFIX/share/ff/
 """
 
 test = """
+rm -rf npointes && \
 $FC ./ff/src/ff/npointes.f -o npointes $FFLAGS -I$CONDA_PREFIX/include/ff $LDFLAGS -lff && \
 ./npointes
 """

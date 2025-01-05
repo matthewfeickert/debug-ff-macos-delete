@@ -7,6 +7,12 @@ platforms = ["linux-64", "osx-64", "osx-arm64"]
 version = "0.1.0"
 
 [tasks]
+
+git-init = """
+git config --global user.email "you@example.com" && \
+git config --global user.name "Your Name"
+"""
+
 clone = """
 rm -rf ff && \
 git clone https://github.com/hep-packaging-coordination/ff.git && \

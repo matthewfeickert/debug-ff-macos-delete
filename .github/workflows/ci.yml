@@ -37,6 +37,7 @@ jobs:
 
     - name: Build
       run: |
+        pixi run git-init
         pixi run clone
         pixi run build
 

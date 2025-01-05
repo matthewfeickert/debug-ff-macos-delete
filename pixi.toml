@@ -37,6 +37,8 @@ $FC ./ff/src/ff/npointes.f -o npointes $FFLAGS -I$CONDA_PREFIX/include/ff $LDFLA
 ./npointes
 """
 
+start = { depends-on = ["clone", "build", "test"] }
+
 [dependencies]
 fortran-compiler = ">=1.8.0,<2"
 make = ">=4.4.1,<5"

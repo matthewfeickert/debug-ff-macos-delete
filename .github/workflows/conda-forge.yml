@@ -1,0 +1,40 @@
+name: conda-forge build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+        matrix:
+          os: [macos-13]
+
+    steps:
+    - name: Checkout conda-forge feedstock
+      uses: actions/checkout@v4
+      with:
+        repository: matthewfeickert/ff-feedstock
+        ref: 'enh/add-macos-x86-build-support'
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Validate commit hash
+      run: git rev-parse HEAD
+
+    - name: Locally build
+      run: |
+        python build-locally.py osx_64_

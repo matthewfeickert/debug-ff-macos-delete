@@ -2,7 +2,7 @@ name: conda-forge build
 
 on:
   push:
-    branches: [ main ]
+    # branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: matthewfeickert/ff-feedstock
-        ref: 'enh/add-macos-x86-build-support'
+        ref: 'debug-gha'
 
     - name: Set up Python
       uses: actions/setup-python@v5
